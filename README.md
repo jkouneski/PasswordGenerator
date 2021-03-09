@@ -7,7 +7,6 @@ https://jkouneski.github.io/PasswordGenerator/
 
 
 
-
 ## Technologies Used
 ---
 * HTML
@@ -18,7 +17,7 @@ https://jkouneski.github.io/PasswordGenerator/
 
 ## Mock up
 ---
-./Develop/03-javascript-homework-demo.png
+! [ mock up ](./Develop/03-javascript-homework-demo.png)
 
 
 
