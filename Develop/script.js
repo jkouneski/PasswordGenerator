@@ -29,7 +29,7 @@ function customizePassword() {
   var passwordLength = prompt("How many characters in your password?");
 
   // Alert to restart if user does not choose a NUMBER beween 8 and 128
-  if (isNaN(passwordLength) || passwordLength < 8 || passwordLength >= 129) {
+  if (isNaN(passwordLength) || passwordLength < 8 || passwordLength >= 128) {
     alert("Password length must be a number between 8 - 128.");
     customizePassword();
     return;
