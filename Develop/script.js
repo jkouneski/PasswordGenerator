@@ -1,13 +1,13 @@
 
 //Assignment Code
-const generateBtn = document.querySelector("#generate");
+var generateBtn = document.querySelector("#generate");
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", customizePassword);
 
 //Function to create an array for potential characters
 function createArray(low, high) {
-  const array = [];
+  var array = [];
   for (var i = low; i <= high; i++) {
     array.push(i);
   }
@@ -15,10 +15,10 @@ function createArray(low, high) {
 }
 
 //Creating array of character codes for each character type
-const uppercaseCodes = createArray(65, 90);
-const lowercaseCodes = createArray(97, 122);
-const numberCodes = createArray(48, 57);
-const specialCodes = createArray(33, 47)
+var uppercaseCodes = createArray(65, 90);
+var lowercaseCodes = createArray(97, 122);
+var numberCodes = createArray(48, 57);
+var specialCodes = createArray(33, 47)
   .concat(createArray(58, 64))
   .concat(createArray(91, 96))
   .concat(createArray(123, 126));
@@ -26,7 +26,7 @@ const specialCodes = createArray(33, 47)
 
 // Function to ask user for password length
 function customizePassword() {
-  const passwordLength = prompt("How many characters in your password?");
+  var passwordLength = prompt("How many characters in your password?");
 
   // Alert to restart if user does not choose a NUMBER beween 8 and 128
   if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 129) {
@@ -36,10 +36,10 @@ function customizePassword() {
   }
 
   // Series of confirmations for user to choose desired character types
-  const confirmLowercase = confirm("Lowercase characters?");
-  const confirmUppercase = confirm("Uppercase characters?");
-  const confirmNumbers = confirm("Numbers?");
-  const confirmSpecial = confirm("Special Characters?");
+  var confirmLowercase = confirm("Lowercase characters?");
+  var confirmUppercase = confirm("Uppercase characters?");
+  var confirmNumbers = confirm("Numbers?");
+  var confirmSpecial = confirm("Special Characters?");
 
   //Alert ensures user chooses at least 1 character type
   if (
@@ -57,9 +57,9 @@ function customizePassword() {
 }
 
 // Function to get random index from each array
-function getRandom(array) {
-  let randomIndex = Math.floor(Math.random() * array.length);
-  let randomElement = array[randomIndex];
+function randomize(array) {
+  var randomIndex = Math.floor(Math.random() * array.length);
+  var randomElement = array[randomIndex];
   return randomElement;
 }
 
@@ -69,55 +69,55 @@ function getUserSpecs(
   {
 
   // Array that we can add user selected character sets to and use to fill in rest of password
-  let draftCharacters = [];
+  var draftCharacters = [];
 
-  // Array that we will push random characters to and then .join('') to get final password string output
-  let finalCharacters = [];
+  // Array that we will push random characters to and then .join('') to get final password string
+  var finalCharacters = [];
 
   // For each confirm returned True will crate just 1 random character code
   if (confirmLowercase) {
     draftCharacters = draftCharacters.concat(lowercaseCodes);
     finalCharacters.push(
-      String.fromCharCode(getRandom(lowercaseCodes))
+      String.fromCharCode(randomize(lowercaseCodes))
     );
   }
   if (confirmUppercase) {
     draftCharacters = draftCharacters.concat(uppercaseCodes);
     finalCharacters.push(
-      String.fromCharCode(getRandom(uppercaseCodes))
+      String.fromCharCode(randomize(uppercaseCodes))
     );
   }
   if (confirmNumbers) {
     draftCharacters = draftCharacters.concat(numberCodes);
     finalCharacters.push(
-      String.fromCharCode(getRandom(numberCodes))
+      String.fromCharCode(randomize(numberCodes))
     );
   }
   if (confirmSpecial) {
     draftCharacters = draftCharacters.concat(specialCodes);
     finalCharacters.push(
-      String.fromCharCode(getRandom(specialCodes))
+      String.fromCharCode(randomize(specialCodes))
     );
   }
 
   //Variable to see how many more random characters are needed
-  let lengthCalculation = passwordLength - finalCharacters.length;
+  var lengthCalculation = passwordLength - finalCharacters.length;
 
   //Loop to grab more random characters so password is the desired length
   for (var i = 0; i < lengthCalculation; i++) {
     finalCharacters.push(
-      String.fromCharCode(getRandom(draftCharacters))
+      String.fromCharCode(randomize(draftCharacters))
     );
   }
 
   // Changing characters from elements in array into a string
-  let generatePassword = finalCharacters.join('')
+  var generatePassword = finalCharacters.join('')
   writePassword(generatePassword)
 
 }
 
 // Write password to the #password input
 function writePassword(password) {
-  const passwordText = document.querySelector("#password");
+  var passwordText = document.querySelector("#password");
   passwordText.value = password;
 }
