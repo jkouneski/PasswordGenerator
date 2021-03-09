@@ -17,6 +17,9 @@ https://jkouneski.github.io/PasswordGenerator/
 
 ## Mock up
 ---
+
+The below image displays the application's appearance and functionality:
+
 ![The Password Generator application displays a red button to "Generate Password".](./Develop/03-javascript-homework-demo.png)
 
 
